@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Discount Calc — Sale Price, Stacked Discounts, VAT &amp; Unit Price | S3eidat Tools</title>
+<meta name="description" content="Sale price and savings with percent or fixed discounts, a stacked second discount and VAT. Find the discount from two prices, and compare two deals by unit price. Free and private.">
+<meta property="og:title" content="Discount Calc — free, private discount calculator">
+<meta property="og:description" content="Sale price, savings and tax in one place. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="discount-calc">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Discount Calc</h1>
+    <p>What you really pay after one or two discounts and VAT, what the discount was from two prices, and which of two packs is the better deal.</p>
+  </section>
+
+  <section class="card">
+    <div class="dc-grid">
+      <div class="stack">
+        <h2>Sale price</h2>
+        <label class="field">Original price
+          <input class="input big-in" id="price" inputmode="decimal" autocomplete="off" placeholder="0.00">
+        </label>
+        <div class="field">
+          <label for="d1">Discount</label>
+          <div class="row nowrap">
+            <input class="input grow" id="d1" inputmode="decimal" autocomplete="off" placeholder="20">
+            <div class="seg" id="d1t" role="group" aria-label="Discount type"><button type="button" data-v="pct">%</button><button type="button" data-v="amt">Amount</button></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="d2">Extra discount on top <span class="faint">(optional, e.g. coupon)</span></label>
+          <div class="row nowrap">
+            <input class="input grow" id="d2" inputmode="decimal" autocomplete="off" placeholder="0">
+            <div class="seg" id="d2t" role="group" aria-label="Extra discount type"><button type="button" data-v="pct">%</button><button type="button" data-v="amt">Amount</button></div>
+          </div>
+        </div>
+        <label class="field">Tax / VAT added at checkout
+          <span class="adorn"><input class="input" id="tax" inputmode="decimal" autocomplete="off" placeholder="0"><i>%</i></span>
+        </label>
+      </div>
+      <div class="stack">
+        <div class="hero-res" id="hero"></div>
+        <dl class="receipt" id="receipt"></dl>
+        <p class="insight" id="insight" hidden></p>
+        <div class="row end"><button class="btn small" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy</button></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid-2 mt">
+    <section class="card stack">
+      <h2>What was the discount?</h2>
+      <div class="grid-2 tight">
+        <label class="field">Original price <input class="input" id="r-was" inputmode="decimal" autocomplete="off"></label>
+        <label class="field">Sale price <input class="input" id="r-now" inputmode="decimal" autocomplete="off"></label>
+      </div>
+      <div class="mini-res" id="r-res"></div>
+    </section>
+
+    <section class="card stack">
+      <div class="row between">
+        <h2>Compare two deals</h2>
+        <label class="unit-l">per <input class="input unit-in" id="c-unit" autocomplete="off" maxlength="8" aria-label="Unit name" dir="auto"></label>
+      </div>
+      <div class="deals">
+        <div class="deal" id="deal-a"><b>A</b>
+          <label class="field">Price <input class="input" id="a-p" inputmode="decimal" autocomplete="off"></label>
+          <label class="field">Amount <input class="input" id="a-q" inputmode="decimal" autocomplete="off"></label>
+        </div>
+        <div class="deal" id="deal-b"><b>B</b>
+          <label class="field">Price <input class="input" id="b-p" inputmode="decimal" autocomplete="off"></label>
+          <label class="field">Amount <input class="input" id="b-q" inputmode="decimal" autocomplete="off"></label>
+        </div>
+      </div>
+      <div class="mini-res" id="c-res"></div>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
